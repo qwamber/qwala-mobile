@@ -1,10 +1,19 @@
 import React, { Component } from 'react';
-import { Text, Image, View, KeyboardAvoidingView, TouchableWithoutFeedback, ImageBackground, TextInput } from 'react-native';
+import { Text, Image, View, AsyncStorage, KeyboardAvoidingView, TouchableWithoutFeedback, ImageBackground, TextInput } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-// import qwala from 'qwala';
 import styles from './styles.js';
 
 export default class QwalaView extends Component {
+    static navigationOptions = {
+        tabBarLabel: 'Shorten',
+        tabBarIcon: ({ focused, horizontal, tintColor }) => {
+            return <Image
+                source={require('./res/koala-icon.png')}
+                style={{ width: 25, height: 25, tintColor, resizeMode: 'contain' }}
+            />
+        }
+    };
+
     constructor(props) {
         super(props);
 
@@ -113,8 +122,18 @@ export default class QwalaView extends Component {
             }),
         }).then((res) => {
             return Promise.all([res.status, res.json()]);
-        }).then((values) => {
+        }).then(async (values) => {
             if (values[0] === 200) {
+                try {
+                    let savedShortLinkIDs = await AsyncStorage.getItem('@Qwala:savedShortLinkIDs');
+                    let savedShortLinkIDsArray = savedShortLinkIDs ? JSON.parse(savedShortLinkIDs) : [];
+                    let newSavedArray = savedShortLinkIDsArray.concat([
+                        [values[1].shortLinkID, this.state.longLink]
+                    ]);
+                    await AsyncStorage.setItem('@Qwala:savedShortLinkIDs', JSON.stringify(newSavedArray));
+                } catch (error) {
+                }
+
                 this.setState({
                     longLink: 'https://qwa.la/' + values[1].shortLinkID,
                     error: '',

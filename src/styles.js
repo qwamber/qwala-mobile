@@ -9,7 +9,7 @@ export default StyleSheet.create({
         margin: 0,
     },
     qwalaViewInnerContainer: {
-        marginTop: 200,
+        marginTop: '35%',
         width: '100%',
         padding: 0,
         margin: 0,
@@ -37,7 +37,7 @@ export default StyleSheet.create({
     },
     qwalaViewKoalaLogoContainer: {
         marginBottom: 0,
-        height: '23%',
+        height: 80,
         width: '100%',
         shadowColor: 'rgba(0, 0, 0, 0.25)',
         shadowOffset: {
@@ -120,5 +120,43 @@ export default StyleSheet.create({
             height: 1,
         },
         textShadowRadius: 1,
-    }
+    },
+    shortLinkListDescription: {
+        textAlign: 'center',
+        marginTop: 20,
+        marginBottom: 13,
+        marginHorizontal: 24,
+        fontSize: 17,
+        fontWeight: 'bold',
+    },
+    shortLinkListMessage: {
+        textAlign: 'center',
+        marginTop: 34,
+        marginHorizontal: 24,
+        fontSize: 16,
+    },
+    webViewMessage: {
+        textAlign: 'center',
+        marginTop: 50,
+        marginHorizontal: 24,
+        fontSize: 18,
+    },
+    shortLinkList: {
+        height: '92%',
+    },
+    shortLinkListCell: {
+        height: 80,
+        paddingTop: 22,
+        paddingLeft: 22,
+        fontSize: 17,
+        borderBottomWidth: 0.5,
+        borderColor: '#dddddd',
+    },
+    shortLinkListTitle: {
+        fontSize: 19,
+        fontWeight: 'bold',
+    },
+    shortLinkListText: {
+        color: '#333333',
+    },
 });

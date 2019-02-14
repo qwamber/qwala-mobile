@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
-import QwalaView from './src/QwalaView.js';
+import TabNavigator from './src/TabNavigator.js';
 
 export default class App extends Component {
     render() {
         return (
-            <QwalaView></QwalaView>
+            <TabNavigator></TabNavigator>
         );
     }
 }
